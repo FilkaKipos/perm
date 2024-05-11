@@ -28,7 +28,7 @@ h1 {
     font-family: "Oswald", sans-serif;
     font-weight: 600;
     font-size: 24px;
-    left: 90px;
+    margin-left: 20px; /* Изменяем отступ слева */
 }
 
 nav ul {
@@ -80,20 +80,45 @@ nav ul li a:hover::after {
     font-family: "Oswald", sans-serif;
     font-weight: 600;
     font-size: 24px;
-    left: 90px; /* Отступ справа */
+    margin-left: 20px; /* Изменяем отступ слева */
 }
 
 .tag-filter label {
-    margin-right: 10px; /* Отступ между меткой и селектом */
+    margin-right: 10px;
 }
 
 .tag-filter select {
-    padding: 5px; /* Поля вокруг текста */
-    border: 1px solid #ccc; /* Граница */
-    border-radius: 5px; /* Скругленные углы */
-    background-color: #fff; /* Фон */
-    font-size: 14px; /* Размер шрифта */
-    color: #333; /* Цвет текста */
-    cursor: pointer; /* Курсор указателя */
-    
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column; /* Изменяем направление флексбокса на вертикальное */
+        align-items: flex-start; /* Выравниваем элементы по левому краю */
+        padding: 10px;
+    }
+
+    h1, .tag-filter {
+        margin: 10px 0; /* Уменьшаем отступы */
+    }
+
+    nav ul {
+        flex-direction: column; /* Располагаем элементы вертикально */
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px; /* Добавляем отступ между пунктами меню */
+    }
+
+    .tag-filter select {
+        width: 100%; /* Растягиваем select на всю ширину */
+    }
 }
