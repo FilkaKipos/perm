@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const cardsContainer = document.getElementById('cards-container');
 
     // Функция для создания карточки
-    function createCard(title, imageUrl, description) {
+    function createCard(title, imageUrl, description, tag) {
         const card = document.createElement('div');
         card.classList.add('card');
 
@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function() {
         cardInfo.classList.add('card-info');
         cardInfo.textContent = truncateDescription(description, 6); // Ограничиваем краткую информацию 5 словами
         card.appendChild(cardInfo);
+
+        const cardTag = document.createElement('p'); // Создаем элемент для тега
+        cardTag.classList.add('card-tag');
+        cardTag.textContent = `${tag}`; // Добавляем тег
+        card.appendChild(cardTag);
 
         const button = document.createElement('a');
         button.classList.add('card-button');
@@ -37,6 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Заполнение карточек данными из data.js
     for (const item of data) {
-        createCard(item.title, item.imageUrl, item.description);
+        createCard(item.title, item.imageUrl, item.description, item.tag); // Добавляем tag к каждой карточке
     }
 });

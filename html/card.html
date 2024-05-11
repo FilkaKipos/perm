@@ -21,6 +21,17 @@
                 <li><a href="/html/card.html">Достопримечательности</a></li>
             </ul>
         </nav>
+        <!-- Добавленный блок для фильтра -->
+        <div class="tag-filter" >
+            <label for="tag-filter">Фильтр по тегу:</label>
+            <select id="tag-filter">
+                <option value="">Выберите тег</option>
+                <option value="Памятник">Памятник</option>
+                <option value="Площади, парки">Площади, парки</option>
+                <option value="Религия">Религия</option>
+                <option value="Культура">Культура</option>
+            </select>
+        </div>
         <div class="scroll-down"></div>
     </header>
 
@@ -42,6 +53,26 @@
                     window.location.href = '/html/details.html?id=' + index;
                 });
             });
+
+            // Обработчик изменения значения фильтра
+            const tagFilter = document.getElementById('tag-filter');
+            tagFilter.addEventListener('change', function() {
+                const selectedTag = tagFilter.value;
+                filterCardsByTag(selectedTag);
+            });
+
+            // Функция для фильтрации карточек по тегу
+            function filterCardsByTag(tag) {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    const cardTag = card.querySelector('.card-tag').textContent;
+                    if (tag === '' || cardTag.includes(tag)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
         });
     </script>
 </body>
